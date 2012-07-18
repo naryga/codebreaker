@@ -1,5 +1,6 @@
 module CodeBreaker
   class Game
+    
     def initialize(output)
       @output = output
     end
@@ -11,11 +12,9 @@ module CodeBreaker
     end
     
     def guess(guess)
-      if @secret.include?(guess[0])
-        @output.puts '-'
-      else
-        @output.puts ''
-      end
+      marker = Marker.new(@secret, guess)
+      @output.puts '+'*marker.exact_match_count + '-'*marker.number_match_count
     end
+  
   end
 end
